@@ -1,5 +1,8 @@
 # Backend-Codeigniter
 
+# Crar base de datos inventarios_db.
+Dar click en importar -> seleccionar archivo -> buscar dentro de la carpeta inventarios_db.sql y seleccionar.
+
 ## Obtener Mobiliario
 http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/
 
