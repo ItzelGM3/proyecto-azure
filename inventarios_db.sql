@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-09-2024 a las 06:54:30
+-- Tiempo de generación: 27-09-2024 a las 17:27:26
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.26
 
@@ -60,7 +60,10 @@ CREATE TABLE `mobiliario` (
 --
 
 INSERT INTO `mobiliario` (`id_mobiliario`, `nombre`, `descripcion`, `tipo`, `estado`, `fecha_registro`, `activo`, `codigo`, `id_ubicacion`) VALUES
-(1, 'Mesa', 'Mesa color Negra', 0, 0, '2026-09-24 00:00:00', 1, '123asd', 1);
+(1, 'Mesa', 'Mesa color Negra', 0, 0, '2026-09-24 00:00:00', 1, '123asd', 1),
+(6, 'Silla', 'De plástico verde', 0, 1, '2024-09-27 17:22:06', 0, 'hdeiess23', 4),
+(12, 'Pizarrón', 'Grande y blanco', 0, 0, '2027-09-24 00:00:00', 0, '198jdd', 4),
+(13, 'Pizarrón', 'Grande y verde', 0, 0, '2027-09-24 00:00:00', 0, '109jjjdd', 3);
 
 -- --------------------------------------------------------
 
@@ -83,8 +86,9 @@ CREATE TABLE `personas` (
 --
 
 INSERT INTO `personas` (`id_persona`, `nombre`, `apaterno`, `amaterno`, `matricula`, `telefono`, `correo`) VALUES
-(1, 'Osvaldo', 'Gaspar', 'Rodriguez', 'utp0151439', '2213635406', 'alejandrogaspar89@gmail.com'),
-(2, 'Itzel', 'Guarneros', 'Mendez', 'utp01448858', '2231431329', 'itzel303@gmail.com');
+(1, 'Osvaldo', 'Mendez', 'Guarneros', 'utp01448858', '2231431329', 'itzel303@gmail.com'),
+(3, 'Miriam', 'Martinez', 'Mendez', 'utp0000000', '2231431329', 'itzel303@gmail.com'),
+(4, 'Lucila', 'Martinez', 'Sanchez', 'utp0000000', '2231431329', 'itzel303@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -104,8 +108,6 @@ CREATE TABLE `resguardos` (
 --
 
 INSERT INTO `resguardos` (`id_resguardo`, `id_persona`, `id_mobiliario`, `fecha_asignacion`) VALUES
-(4, 2, 1, '2022-09-24 00:00:00'),
-(5, 2, 1, '2026-09-24 00:00:00'),
 (6, 1, 1, '2026-09-24 00:00:00'),
 (7, 1, 1, '2026-09-24 00:00:00');
 
@@ -128,7 +130,8 @@ CREATE TABLE `ubicacion` (
 
 INSERT INTO `ubicacion` (`id_ubicacion`, `edificio`, `departamento`, `area`) VALUES
 (1, 'D5', 'Tecnologias de la informacion', 'Laboratorio 211'),
-(3, 'K5', 'Tecnologias de la informacion', '102');
+(3, 'K5', 'Tecnologias de la informacion', '102'),
+(4, 'K5', 'Tecnologias de la informacion', 'Laboratorio 108');
 
 --
 -- Índices para tablas volcadas
@@ -181,13 +184,13 @@ ALTER TABLE `computo`
 -- AUTO_INCREMENT de la tabla `mobiliario`
 --
 ALTER TABLE `mobiliario`
-  MODIFY `id_mobiliario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_mobiliario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `resguardos`
@@ -199,7 +202,7 @@ ALTER TABLE `resguardos`
 -- AUTO_INCREMENT de la tabla `ubicacion`
 --
 ALTER TABLE `ubicacion`
-  MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
