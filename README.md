@@ -1,31 +1,46 @@
-# Backend-Codeigniter
+# API de Inventarios
 
-# Crar base de datos inventarios_db.
-Dar click en importar -> seleccionar archivo -> buscar dentro de la carpeta inventarios_db.sql y seleccionar.
+Este proyecto implementa un sistema para gestionar mobiliarios y resguardos utilizando Codeigniter.
 
-## Obtener Mobiliario
-http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/
+## Instrucciones para configurar la base de datos
 
+1. Crear la base de datos `inventarios_db`.
+2. Dar click en **Importar**.
+3. Seleccionar el archivo `inventarios_db.sql` y cargarlo.
 
-## Metodo para insertar Mobiliario:
+## Endpoints de la API
 
-http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/
+### Mobiliario
 
- {
-  "nombre":"Mesa",
-  "descripcion":"Mesa color cafe",
-  "tipo":"Madera",
-  "estado":"Bueno",
-  "fecha_registro":"26/09/24",
-  "activo":"1",
-  "codigo":"123asd",
-  "id_ubicacion":"1"
-}
+#### Obtener Mobiliario
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/`
+- **Método:** `GET`
+- **Descripción:** Obtiene la lista de todos los mobiliarios.
 
-## Actualizar mobiliario
-http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/6
+#### Insertar Mobiliario
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/`
+- **Método:** `POST`
+- **Cuerpo de la solicitud:**
+    ```json
+    {
+      "nombre": "Mesa",
+      "descripcion": "Mesa color cafe",
+      "tipo": "Madera",
+      "estado": "Bueno",
+      "fecha_registro": "26/09/24",
+      "activo": "1",
+      "codigo": "123asd",
+      "id_ubicacion": "1"
+    }
+    ```
+- **Descripción:** Inserta un nuevo mobiliario.
 
- {
+#### Actualizar Mobiliario
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/6`
+- **Método:** `PUT`
+- **Cuerpo de la solicitud:**
+    ```json
+    {
       "id_mobiliario": "6",
       "nombre": "Pizarron",
       "descripcion": "Pizarron grande",
@@ -35,35 +50,49 @@ http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/6
       "activo": "0",
       "codigo": "asdpze",
       "id_ubicacion": "1"
-}
+    }
+    ```
+- **Descripción:** Actualiza un mobiliario específico.
 
-## Eliminar Mobiliario:
+#### Eliminar Mobiliario
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/6`
+- **Método:** `DELETE`
+- **Descripción:** Elimina un mobiliario específico.
 
-http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/6
+### Resguardos
 
+#### Obtener Resguardos
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/`
+- **Método:** `GET`
+- **Descripción:** Obtiene la lista de todos los resguardos.
 
-## Get resguardos:
-http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/
+#### Insertar Resguardos
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/`
+- **Método:** `POST`
+- **Cuerpo de la solicitud:**
+    ```json
+    {
+      "id_persona": "2",
+      "id_mobiliario": "1",
+      "fecha_asignacion": "26/09/24"
+    }
+    ```
+- **Descripción:** Inserta un nuevo resguardo.
 
-## Post resguardos
+#### Actualizar Resguardos
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/4`
+- **Método:** `PUT`
+- **Cuerpo de la solicitud:**
+    ```json
+    {
+      "id_persona": "2",
+      "id_mobiliario": "1",
+      "fecha_asignacion": "22/09/24"
+    }
+    ```
+- **Descripción:** Actualiza un resguardo específico.
 
-http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/
-
-{
-  "id_persona": "2",
-  "id_mobiliario": "1",
-  "fecha_asignacion":"26/09/24"
-}
-
-## Put resguardos
-http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/4
-
-{
-  "id_persona": "2",
-  "id_mobiliario": "1",
-  "fecha_asignacion":"22/09/24"
-}
-
-#Delete resguardos
-
-http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/4
+#### Eliminar Resguardos
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/4`
+- **Método:** `DELETE`
+- **Descripción:** Elimina un resguardo específico.
