@@ -10,6 +10,10 @@ Este proyecto implementa un sistema para gestionar mobiliarios y resguardos util
 
 ## Endpoints de la API
 
+
+
+
+
 ### Mobiliario
 
 #### Obtener Mobiliario
@@ -20,7 +24,7 @@ Este proyecto implementa un sistema para gestionar mobiliarios y resguardos util
 #### Insertar Mobiliario
 - **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/`
 - **Método:** `POST`
-- **Cuerpo de la solicitud:**
+- **Cuerpo del Json:**
     ```json
     {
       "nombre": "Mesa",
@@ -38,7 +42,7 @@ Este proyecto implementa un sistema para gestionar mobiliarios y resguardos util
 #### Actualizar Mobiliario
 - **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/6`
 - **Método:** `PUT`
-- **Cuerpo de la solicitud:**
+- **Cuerpo del Json:**
     ```json
     {
       "id_mobiliario": "6",
@@ -59,6 +63,93 @@ Este proyecto implementa un sistema para gestionar mobiliarios y resguardos util
 - **Método:** `DELETE`
 - **Descripción:** Elimina un mobiliario específico.
 
+
+
+### Personas
+
+#### Obtener Personas
+
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Personas`
+- **Método:** `GET`
+- **Descripción:** Obtiene la lista de todas las personas.
+
+#### Insertar Personas
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Personas`
+- **Método:** `POST`
+- **Cuerpo del Json:**
+    ```json
+        {
+          "nombre":"Itzel",
+          "apaterno":"Guarneros",
+          "amaterno":"Mendez",
+          "matricula":"utp01448858",
+          "telefono":"2231431329",
+          "correo":"itzel303@gmail.com"
+        }
+    ```
+- **Descripción:** Inserta una nueva Persona.
+
+#### Actualizar Persona
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Personas/1`
+- **Método:** `PUT`
+- **Cuerpo del Json:**
+    ```json
+       {
+        "nombre":"Osvaldo",
+        "apaterno":"Mendez",
+        "amaterno":"Guarneros",
+        "matricula":"utp01448858",
+        "telefono":"2231431329",
+        "correo":"itzel303@gmail.com"
+        }
+    ```
+- **Descripción:** Actualiza una persona.
+
+#### Eliminar Persona
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Persona/3`
+- **Método:** `DELETE`
+- **Descripción:** Elimina una persona.
+
+
+
+### Ubucaciones
+
+#### Obtener ubicaciones
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Ubicacion/`
+- **Método:** `GET`
+- **Descripción:** Obtiene la lista de todas las ubicaciones.
+
+#### Insertar Ubicación
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Ubicacion/`
+- **Método:** `POST`
+- **Cuerpo del Json:**
+    ```json
+        {
+          "edificio": "K5",
+          "departamento": "Tecnologias de la informacion",
+          "area": "Laboratorio 108"
+        }
+    ```
+- **Descripción:** Inserta una nueva uicación.
+
+#### Actualizar ubicación
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Ubicacion/4`
+- **Método:** `PUT`
+- **Cuerpo del Json:**
+    ```json
+    {
+      "area":"102"
+    }
+    ```
+- **Descripción:** Actualiza una ubicación.
+
+#### Eliminar ubicación
+- **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Ubicacion/1`
+- **Método:** `DELETE`
+- **Descripción:** Elimina una ubicación.
+
+
+
 ### Resguardos
 
 #### Obtener Resguardos
@@ -69,7 +160,7 @@ Este proyecto implementa un sistema para gestionar mobiliarios y resguardos util
 #### Insertar Resguardos
 - **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/`
 - **Método:** `POST`
-- **Cuerpo de la solicitud:**
+- **Cuerpo del Json:**
     ```json
     {
       "id_persona": "2",
@@ -82,7 +173,7 @@ Este proyecto implementa un sistema para gestionar mobiliarios y resguardos util
 #### Actualizar Resguardos
 - **URL:** `http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/4`
 - **Método:** `PUT`
-- **Cuerpo de la solicitud:**
+- **Cuerpo del Json:**
     ```json
     {
       "id_persona": "2",
