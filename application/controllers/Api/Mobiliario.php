@@ -30,48 +30,96 @@ class Mobiliario extends REST_Controller {
 	}
 
    public function index_post()
-   {
-      if(!empty($id)){
-         $data = $this->db->get_where("ubicacion", array('id_ubicacion' => $id))->row_array();
-      }else{
-         $data = $this->db->get("ubicacion")->result();
-         
-      }
-      $data = array(
-         "status"    => "ok",
-         "message"   => "Ubicacion(es) recuperados",
-         "data"      => $data
-      );
-      $json = $this->input->raw_input_stream;
-      $mobiliario = json_decode($json);
-      $this->db->insert('mobiliario',$mobiliario);
-      $data = array(
-         "status"    => "ok",
-         "message"   => "Mobiliario agregado"
-      );
-      $this->response($data, REST_Controller::HTTP_OK);
-   }
+{
+    $json = $this->input->raw_input_stream;
+    $mobiliario = json_decode($json);
 
-   public function index_put($id)
-   {
-      $json = $this->input->raw_input_stream;
-      $mobiliario = json_decode($json);
-      $this->db->update('mobiliario', $mobiliario, array('id_mobiliario'=>$id));
-      $data = array(
-         "status"    => "ok",
-         "message"   => "Mobiliario actualizado"
-      );
-      $this->response($data, REST_Controller::HTTP_OK);
-   }
+    
+    if (isset($mobiliario->id_ubicacion) && !empty($mobiliario->id_ubicacion)) {
+        $id = $mobiliario->id_ubicacion;
 
-   public function index_delete($id)
-   {
-      $this->db->delete('ubicacion', array('id_ubicacion'=>$id));
-      $data = array(
-         "status"    => "ok",
-         "message"   => "Ubicacion eliminada"
-      );
-      $this->response($data, REST_Controller::HTTP_OK);
-   }
+        
+        $data = $this->db->get_where("ubicacion", array('id_ubicacion' => $id))->row_array();
+
+        
+        if (empty($data)) {
+            $response = array(
+                "status"  => "error",
+                "message" => "Ubicación no encontrada"
+            );
+            $this->response($response, REST_Controller::HTTP_NOT_FOUND);
+            return;
+        }
+    } else {
+       
+        $data = $this->db->get("ubicacion")->result();
+    }
+    $this->db->insert('mobiliario', $mobiliario);
+    $response = array(
+        "status"  => "ok",
+        "message" => "Mobiliario agregado"
+    );
+    
+    $this->response($response, REST_Controller::HTTP_OK);
+}
+public function index_put($id)
+{
+    $json = $this->input->raw_input_stream;
+    $mobiliario = json_decode($json);
+
+    if (isset($mobiliario->id_ubicacion) && !empty($mobiliario->id_ubicacion)) {
+        $ubicacion_id = $mobiliario->id_ubicacion; 
+        
+        $data = $this->db->get_where("ubicacion", array('id_ubicacion' => $ubicacion_id))->row_array();
+        if (empty($data)) {
+            $response = array(
+                "status"  => "error",
+                "message" => "Ubicación no encontrada"
+            );
+            $this->response($response, REST_Controller::HTTP_NOT_FOUND);
+            return;
+        }
+    }
+
+    $this->db->update('mobiliario', $mobiliario, array('id_mobiliario' => $id));
+
+    if ($this->db->affected_rows() > 0) {
+        $data = array(
+            "status"  => "ok",
+            "message" => "Mobiliario actualizado"
+        );
+    } else {
+        $data = array(
+            "status"  => "error",
+            "message" => "No se realizó ninguna actualización"
+        );
+    }
+
+    $this->response($data, REST_Controller::HTTP_OK);
+}
+
+public function index_delete($id)
+{
+   
+    $mobiliario = $this->db->get_where('mobiliario', array('id_mobiliario' => $id))->row_array();
+
+    if (empty($mobiliario)) {
+      
+        $response = array(
+            "status"  => "error",
+            "message" => "Mobiliario no encontrado"
+        );
+        $this->response($response, REST_Controller::HTTP_NOT_FOUND);
+        return; 
+    }
+
+    $this->db->delete('mobiliario', array('id_mobiliario' => $id));
+
+    $data = array(
+        "status"  => "ok",
+        "message" => "Mobiliario eliminada"
+    );
+    $this->response($data, REST_Controller::HTTP_OK);
+}
 
 }

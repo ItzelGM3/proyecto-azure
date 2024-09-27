@@ -36,7 +36,7 @@ class Personas extends REST_Controller {
       $data = $this->db->insert('personas',$persona);
       if ($data>0){
          $agregado = $this->db->select_max('id_persona');
-         $id =$this->db->get('personas')->row_array()["id_personagit remote add origin"];
+         $id =$this->db->get('personas')->row_array()["id_persona"];
          $data = array(
             "status"    => "ok",
             "message"   => "persona agregada",
