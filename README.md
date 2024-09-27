@@ -42,3 +42,28 @@ http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/6
 http://localhost/codeigniter3-rest-controller/index.php/Api/Mobiliario/6
 
 
+## Get resguardos:
+http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/
+
+## Post resguardos
+
+http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/
+
+{
+  "id_persona": "2",
+  "id_mobiliario": "1",
+  "fecha_asignacion":"26/09/24"
+}
+
+## Put resguardos
+http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/4
+
+{
+  "id_persona": "2",
+  "id_mobiliario": "1",
+  "fecha_asignacion":"22/09/24"
+}
+
+#Delete resguardos
+
+http://localhost/codeigniter3-rest-controller/index.php/Api/Resguardos/4

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-09-2024 a las 04:01:20
+-- Tiempo de generación: 27-09-2024 a las 06:54:30
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.26
 
@@ -60,8 +60,7 @@ CREATE TABLE `mobiliario` (
 --
 
 INSERT INTO `mobiliario` (`id_mobiliario`, `nombre`, `descripcion`, `tipo`, `estado`, `fecha_registro`, `activo`, `codigo`, `id_ubicacion`) VALUES
-(1, 'Mesa', 'Mesa color Negra', 0, 0, '2026-09-24 00:00:00', 1, '123asd', 1),
-(2, 'Silla', 'Silla verde', 0, 0, '2026-09-24 00:00:00', 0, '12123123asd', 3);
+(1, 'Mesa', 'Mesa color Negra', 0, 0, '2026-09-24 00:00:00', 1, '123asd', 1);
 
 -- --------------------------------------------------------
 
@@ -96,9 +95,19 @@ INSERT INTO `personas` (`id_persona`, `nombre`, `apaterno`, `amaterno`, `matricu
 CREATE TABLE `resguardos` (
   `id_resguardo` int(11) NOT NULL,
   `id_persona` int(11) NOT NULL,
-  `id_moviliario` int(11) NOT NULL,
+  `id_mobiliario` int(11) NOT NULL,
   `fecha_asignacion` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `resguardos`
+--
+
+INSERT INTO `resguardos` (`id_resguardo`, `id_persona`, `id_mobiliario`, `fecha_asignacion`) VALUES
+(4, 2, 1, '2022-09-24 00:00:00'),
+(5, 2, 1, '2026-09-24 00:00:00'),
+(6, 1, 1, '2026-09-24 00:00:00'),
+(7, 1, 1, '2026-09-24 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -150,7 +159,7 @@ ALTER TABLE `personas`
 ALTER TABLE `resguardos`
   ADD PRIMARY KEY (`id_resguardo`),
   ADD KEY `fk_resguardos_personas` (`id_persona`),
-  ADD KEY `fk_resguaros_moviliario` (`id_moviliario`);
+  ADD KEY `id_mobiliario` (`id_mobiliario`);
 
 --
 -- Indices de la tabla `ubicacion`
@@ -184,7 +193,7 @@ ALTER TABLE `personas`
 -- AUTO_INCREMENT de la tabla `resguardos`
 --
 ALTER TABLE `resguardos`
-  MODIFY `id_resguardo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_resguardo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `ubicacion`
@@ -207,7 +216,7 @@ ALTER TABLE `mobiliario`
 --
 ALTER TABLE `resguardos`
   ADD CONSTRAINT `fk_resguardos_personas` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_resguaros_moviliario` FOREIGN KEY (`id_moviliario`) REFERENCES `mobiliario` (`id_mobiliario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_resguaros_moviliario` FOREIGN KEY (`id_mobiliario`) REFERENCES `mobiliario` (`id_mobiliario`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
