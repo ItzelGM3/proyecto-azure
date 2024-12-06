@@ -13,7 +13,15 @@ class Resguardos extends REST_Controller {
    public function __construct() {
       parent::__construct();
       $this->load->database();
-   }
+      header('Access-Control-Allow-Origin: *');   
+      header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
+      header('Access-Control-Allow-Headers: Content-Type, Authorization');
+      
+       
+      if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+          exit();  
+      }
+ }
 
    public function index_get($id = 0){
       if(!empty($id)){
